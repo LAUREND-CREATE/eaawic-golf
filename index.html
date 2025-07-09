@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AAWIC Fall Golf Tournament - Build the Future One Swing at a Time</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1F1F1F;
+            background: #FFFFFF;
+        }
+
+        /* Typography */
+        h1, h2, h3 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            color: #1F1F1F;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            color: #1F1F1F;
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: #4A4A4A;
+            margin-bottom: 0.5rem;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: #7A9C32;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            margin-bottom: 2rem;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #7A9C32 0%, #5a7326 100%);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .logo::before {
+            content: "👷‍♀️";
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+
+        .header-cta {
+            background: #F26522;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .header-cta:hover {
+            background: #e55a1f;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #7A9C32 0%, #5a7326 100%);
+            color: white;
+            padding: 120px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>') repeat;
+            opacity: 0.1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            color: white;
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            margin-bottom: 2rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0.95;
+        }
+
+        .event-info {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            margin: 3rem auto;
+            max-width: 600px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .event-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .event-info-item {
+            text-align: center;
+        }
+
+        .event-info-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 3rem;
+        }
+
+        .cta-primary {
+            background: #F26522;
+            color: white;
+            padding: 18px 36px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(242, 101, 34, 0.3);
+        }
+
+        .cta-primary:hover {
+            background: #e55a1f;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(242, 101, 34, 0.4);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: white;
+            padding: 18px 36px;
+            border: 2px solid white;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-secondary:hover {
+            background: white;
+            color: #7A9C32;
+            transform: translateY(-2px);
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-alt {
+            background: #f8f9fa;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Event Details */
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .detail-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            border-left: 4px solid #F26522;
+        }
+
+        .detail-card h3 {
+            color: #7A9C32;
+            margin-bottom: 1rem;
+        }
+
+        .detail-card ul {
+            list-style: none;
+        }
+
+        .detail-card li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .detail-card li:last-child {
+            border-bottom: none;
+        }
+
+        .detail-card li::before {
+            content: "✓";
+            color: #7A9C32;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* Cause Connection */
+        .cause-section {
+            background: linear-gradient(135deg, #4A4A4A 0%, #2d2d2d 100%);
+            color: white;
+        }
+
+        .cause-quote {
+            font-size: 1.5rem;
+            font-style: italic;
+            text-align: center;
+            margin: 2rem 0;
+            padding: 2rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 15px;
+            border-left: 4px solid #F26522;
+        }
+
+        /* Urgency Section */
+        .urgency-section {
+            background: linear-gradient(135deg, #FFC107 0%, #FF8F00 100%);
+            color: #1F1F1F;
+        }
+
+        .urgency-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .urgency-item {
+            background: rgba(255,255,255,0.9);
+            padding: 1.5rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+
+        .urgency-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Sponsorship Section */
+        .sponsor-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .sponsor-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            border-top: 4px solid #7A9C32;
+        }
+
+        /* Pricing Table */
+        .pricing-table {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .pricing-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            text-align: center;
+            position: relative;
+            border: 2px solid #eee;
+            transition: all 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            border-color: #F26522;
+            transform: translateY(-5px);
+        }
+
+        .pricing-card.featured {
+            border-color: #F26522;
+            transform: scale(1.05);
+        }
+
+        .pricing-card.featured::before {
+            content: "MOST POPULAR";
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #F26522;
+            color: white;
+            padding: 5px 20px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #7A9C32;
+            margin: 1rem 0;
+        }
+
+        .price-features {
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+
+        .price-features li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .price-features li:last-child {
+            border-bottom: none;
+        }
+
+        .price-features li::before {
+            content: "✓";
+            color: #7A9C32;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        /* Footer */
+        footer {
+            background: #1F1F1F;
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #7A9C32;
+            margin-bottom: 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #F26522;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .event-info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .details-grid,
+            .urgency-grid,
+            .sponsor-grid,
+            .pricing-table {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing-card.featured {
+                transform: none;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            animation: fadeInUp 0.6s ease-out;
+        }
+
+        /* Countdown Timer */
+        .countdown {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .countdown-item {
+            text-align: center;
+            background: rgba(255,255,255,0.9);
+            padding: 1rem;
+            border-radius: 10px;
+            min-width: 80px;
+        }
+
+        .countdown-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #F26522;
+        }
+
+        .countdown-label {
+            font-size: 0.9rem;
+            color: #4A4A4A;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">AAWIC</div>
+                <a href="#register" class="header-cta">Register Now</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Build the Future—One Swing at a Time</h1>
+                <p class="hero-subtitle">Join us on Friday, October 10th at the University of Georgia Golf Course for a golf tournament that raises scholarship funds for women pursuing careers in construction, design, and the skilled trades.</p>
+                
+                <div class="event-info">
+                    <div class="event-info-grid">
+                        <div class="event-info-item">
+                            <div class="event-info-icon">🗓</div>
+                            <h3>Friday, October 10, 2025</h3>
+                            <p>7:30 AM Registration | 9:00 AM Shotgun Start</p>
+                        </div>
+                        <div class="event-info-item">
+                            <div class="event-info-icon">📍</div>
+                            <h3>University of Georgia Golf Course</h3>
+                            <p>Athens, GA | 4-Person Scramble</p>
+                        </div>
+                        <div class="event-info-item">
+                            <div class="event-info-icon">🎯</div>
+                            <h3>$100,000 Goal</h3>
+                            <p>Scholarships for women in construction</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cta-buttons">
+                    <a href="#register" class="cta-primary">Register a Team</a>
+                    <a href="#sponsor" class="cta-secondary">Sponsor the Event</a>
+                    <a href="#donate" class="cta-secondary">Make a Donation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Event Details -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>A Day of Golf. A Lifetime of Impact.</h2>
+                <p class="tagline">Come for the connections and competition—stay for the cause.</p>
+            </div>
+            
+            <div class="details-grid">
+                <div class="detail-card">
+                    <h3>Event Details</h3>
+                    <ul>
+                        <li>Friday, October 10, 2025</li>
+                        <li>7:30 - 8:30 AM Registration & Breakfast</li>
+                        <li>9:00 AM Shotgun Start | 4-Person Scramble</li>
+                        <li>1:00 PM Awards & Lunch</li>
+                        <li>University of Georgia Golf Course</li>
+                        <li>Golf-appropriate attire required</li>
+                        <li>Free on-site parking available</li>
+                    </ul>
+                </div>
+                
+                <div class="detail-card">
+                    <h3>What's Included</h3>
+                    <ul>
+                        <li>Welcome bag with branded goodies</li>
+                        <li>Continental breakfast & coffee service</li>
+                        <li>18 holes of championship golf with cart</li>
+                        <li>On-course snacks, sandwiches & beverages</li>
+                        <li>BBQ dinner after you play</li>
+                        <li>Open bar throughout the event</li>
+                        <li>Lots of trophies & raffle prizes</li>
+                    </ul>
+                </div>
+                
+                <div class="detail-card">
+                    <h3>Flexible Team Options</h3>
+                    <ul>
+                        <li>Full foursomes welcome</li>
+                        <li>Singles, twosomes & threesomes too</li>
+                        <li>We'll pair you up if necessary</li>
+                        <li>Perfect for networking</li>
+                        <li>All skill levels encouraged</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cause Connection -->
+    <section class="section cause-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 style="color: white;">Why We Golf</h2>
+                <p style="color: rgba(255,255,255,0.9); font-size: 1.2rem;">Your swing funds scholarships for women shaping the future of construction.</p>
+            </div>
+            
+            <p style="font-size: 1.1rem; text-align: center; max-width: 800px; margin: 0 auto;">
+                Now in its 8th year, the AAWIC Golf Tournament has raised over $750,000 for scholarships and programs supporting women in construction. Athens Area Women in Construction (AAWIC) creates opportunities for young women to thrive in architecture, engineering, construction, and the trades. Through hands-on camps, mentorship, and financial support, AAWIC is building a more inclusive and diverse construction industry—starting right here in Athens.
+            </p>
+            
+            <div class="cause-quote">
+                "Together, we're building more than structures—we're building futures."
+            </div>
+            
+            <div style="text-align: center;">
+                <a href="#learn-more" class="cta-primary">Learn More About AAWIC</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Urgency Section -->
+    <section class="section urgency-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Spots Are Filling Fast—Don't Miss Out</h2>
+                <p style="font-size: 1.2rem;">Reserve your team, sponsor package, or seat before registration closes.</p>
+            </div>
+            
+            <div class="countdown">
+                <div class="countdown-item">
+                    <div class="countdown-number">24</div>
+                    <div class="countdown-label">Teams Only</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number">45</div>
+                    <div class="countdown-label">Days Left</div>
+                </div>
+                <div class="countdown-item">
+                    <div class="countdown-number">12</div>
+                    <div class="countdown-label">VIP Spots</div>
+                </div>
+            </div>
+            
+            <div class="urgency-grid">
+                <div class="urgency-item">
+                    <div class="urgency-icon">🎟</div>
+                    <h3>Limited Teams</h3>
+                    <p>Only 24 team spots available for this exclusive tournament</p>
+                </div>
+                <div class="urgency-item">
+                    <div class="urgency-icon">📅</div>
+                    <h3>Early Bird Pricing</h3>
+                    <p>Save $200 per team with early registration</p>
+                </div>
+                <div class="urgency-item">
+                    <div class="urgency-icon">🏆</div>
+                    <h3>VIP Packages</h3>
+                    <p>Premium sponsor opportunities include extra perks</p>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="#register" class="cta-primary">Register Your Team</a>
+                <a href="#sponsor" class="cta-secondary" style="margin-left: 1rem;">Become a Sponsor</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sponsorship Section -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>Be Seen. Be Part of the Change.</h2>
+                <p class="tagline">Align your company with the future of construction.</p>
+            </div>
+            
+            <p style="text-align: center; max-width: 800px; margin: 0 auto 3rem;">
+                Sponsoring the AAWIC Fall Golf Tournament connects your brand with a powerful local mission and a network of leaders in construction, development, and education. Sponsorship levels range from $1,000 to $25,000 and include signage, player slots, and promotion across AAWIC platforms.
+            </p>
+            
+            <div class="sponsor-grid">
+                <div class="sponsor-card">
+                    <h3>Title Sponsor</h3>
+                    <div class="price">$25,000</div>
+                    <ul class="price-features">
+                        <li>Company name in event title</li>
+                        <li>8 player spots included</li>
+                        <li>Premium signage placement</li>
+                        <li>VIP lunch table</li>
+                        <li>Year-round recognition</li>
+                    </ul>
+                    <a href="#sponsor" class="cta-primary">Choose This Level</a>
+                </div>
+                
+                <div class="sponsor-card">
+                    <h3>Presenting Sponsor</h3>
+                    <div class="price">$10,000</div>
+                    <ul class="price-features">
+                        <li>4 player spots included</li>
+                        <li>Tee box signage</li>
+                        <li>Logo on materials</li>
+                        <li>Social media mentions</li>
+                        <li>Newsletter recognition</li>
+                    </ul>
+                    <a href="#sponsor" class="cta-primary">Choose This Level</a>
+                </div>
+                
+                <div class="sponsor-card">
+                    <h3>Supporting Sponsor</h3>
+                    <div class="price">$5,000</div>
+                    <ul class="price-features">
+                        <li>2 player spots included</li>
+                        <li>Hole signage</li>
+                        <li>Program listing</li>
+                        <li>Website recognition</li>
+                        <li>Networking access</li>
+                    </ul>
+                    <a href="#sponsor" class="cta-primary">Choose This Level</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing/Registration Section -->
+    <section class="section" id="register">
+        <div class="container">
+            <div class="section-header">
+                <h2>Choose Your Experience</h2>
+                <p class="tagline">Whether you're golfing or giving, there's a way to get involved.</p>
+            </div>
+            
+            <div class="pricing-table">
+                <div class="pricing-card featured">
+                    <h3>Foursome</h3>
+                    <div class="price">$1,000</div>
+                    <ul class="price-features">
+                        <li>18 holes of golf (4 players)</li>
+                        <li>Breakfast & Bloody Mary Bar</li>
+                        <li>Catered lunch for all</li>
+                        <li>4 premium swag bags</li>
+                        <li>Silent auction access</li>
+                        <li>Awards ceremony</li>
+                    </ul>
+                    <a href="#register-form" class="cta-primary">Register Team</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Individual</h3>
+                    <div class="price">$275</div>
+                    <ul class="price-features">
+                        <li>18 holes of golf (1 player)</li>
+                        <li>Breakfast & Bloody Mary Bar</li>
+                        <li>Catered lunch</li>
+                        <li>Premium swag bag</li>
+                        <li>Silent auction access</li>
+                        <li>Awards ceremony</li>
+                    </ul>
+                    <a href="#register-form" class="cta-primary">Register Now</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>Lunch Only</h3>
+                    <div class="price">$50</div>
+                    <ul class="price-features">
+                        <li>Catered lunch</li>
+                        <li>Silent auction access</li>
+                        <li>Awards ceremony</li>
+                        <li>Networking opportunities</li>
+                        <li>Support the cause</li>
+                    </ul>
+                    <a href="#register-form" class="cta-primary">Buy Lunch Ticket</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Alternative Support -->
+    <section class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2>Can't Attend? You Can Still Make an Impact.</h2>
+                <p class="tagline">Every contribution fuels education, empowerment, and equity.</p>
+            </div>
+            
+            <div class="details-grid">
+                <div class="detail-card">
+                    <h3>🎯 Donate to Scholarships</h3>
+                    <p>Direct financial support for women entering construction careers</p>
+                    <a href="#donate" class="cta-primary">Donate Now</a>
+                </div>
+                
+                <div class="detail-card">
+                    <h3>🙋‍♀️ Volunteer on Event Day</h3>
+                    <p>Help make the tournament run smoothly while supporting the cause</p>
+                    <a href="#volunteer" class="cta-primary">Volunteer</a>
+                </div>
+                
+                <div class="detail-card">
+                    <h3>📢 Share with Your Network</h3>
+                    <p>Spread the word to friends, colleagues, and industry contacts</p>
+                    <a href="#share" class="cta-primary">Share Event</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="section cause-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 style="color: white;">We're Building Something Bigger—Join Us</h2>
+                <p style="color: rgba(255,255,255,0.9); font-size: 1.2rem;">Your support today creates opportunities for tomorrow.</p>
+            </div>
+            
+            <div class="cta-buttons">
+                <a href="#register" class="cta-primary">Register a Team</a>
+                <a href="#sponsor" class="cta-secondary">Sponsor the Event</a>
+                <a href="#donate" class="cta-secondary">Make a Donation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Athens Area Women in Construction</h3>
+                    <p>Building futures, one woman at a time</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Athens, GA<br>
+                    info@aawic.org<br>
+                    (555) 123-4567</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Follow Us</h3>
+                    <div class="social-links">
+                        <a href="#" title="Facebook">📘</a>
+                        <a href="#" title="Instagram">📷</a>
+                        <a href="#" title="LinkedIn">💼</a>
+                    </div>
+                </div>
+            </div>
+            <div style="text-align: center; padding-top: 2rem; border-top: 1px solid #4A4A4A;">
+                <p>&copy; 2025 Athens Area Women in Construction. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute
